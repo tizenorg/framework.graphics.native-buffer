@@ -1,0 +1,3 @@
+PKG_NAME=native-buffer
+TET_INSTALL_HOST_PATH=/home/abuild/Work/PRIVATE/native-buffer/TC/TETware
+TET_INSTALL_TARGET_PATH=/mnt/nfs/Work/PRIVATE/native-buffer/TC/TETware
