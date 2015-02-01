@@ -564,15 +564,6 @@ NBP_PUBLIC native_buffer_t *native_buffer_create_for_tbm (native_buffer_provider
     buffer->base.bo = tbm_bo_import (provider->data.core.bufmgr, key);
     buffer->is_external = TRUE;
 
-    // Check if the bo size matches the required size for the specified format
-    int bo_size = tbm_bo_size (bo);
-    if (!bo_size || bo_size < buffer->size)
-    {
-        NBP_ERR ("The actual bo size(%d) is smaller than the required size(%d)", bo_size, buffer->size);
-        free (buffer);
-        return NULL;
-    }
-
     pthread_mutex_lock (&provider->lock);
     provider->buffer_count++;
     pthread_mutex_unlock (&provider->lock);
@@ -701,7 +692,7 @@ NBP_PUBLIC status_t native_buffer_unlock (native_buffer_t *buffer)
 NBP_PUBLIC int native_buffer_get_lock_count (const native_buffer_t *buffer)
 {
     native_buffer_internal_t *internal;
-    NATIVE_BUFFER_RETURN_IF_FAIL (NATIVE_BUFFER_IS_VALID (buffer), STATUS_NULL_POINTER);
+    NATIVE_BUFFER_RETURN_IF_FAIL (NATIVE_BUFFER_IS_VALID (buffer), -1);
 
     internal = (native_buffer_internal_t *)buffer;
     return internal->lock_count;

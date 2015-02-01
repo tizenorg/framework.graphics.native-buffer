@@ -34,9 +34,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define __NATIVE_BUFFER_DOC_H__
 
 /**
+ * @internal
+ * @ingroup CAPI_UI_FRAMEWORK
  * @defgroup NATIVE_BUFFER Native Buffer
- * @ingroup CORE_LIB_GROUP
- * @brief To provide buffer that can be shared between different types of hardware.
+ * @brief Provides buffer that can be shared between different types of hardware.
  *
  * @section NATIVE_BUFFER_HEADER Required Header
  *   \#include <native-buffer.h>

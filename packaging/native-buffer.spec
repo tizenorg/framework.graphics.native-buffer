@@ -4,13 +4,11 @@
 %define _libdir		%{_prefix}/lib
 
 Name:           native-buffer
-Version:        1.1.0
-Release:        1
-VCS:            magnolia/framework/graphics/native-buffer#6fbba03a5c22123f54bfc60a181cd99872bd0a8b
+Version:        1.1.3
+Release:        2
 License:        MIT
 Summary:        Native Buffer library project
 Group:          System/Libraries
-ExcludeArch:    i586
 Source0:        %{name}-%{version}.tar.gz
 Source1001: 	packaging/native-buffer.manifest
 
@@ -25,6 +23,7 @@ BuildRequires: pkgconfig(dlog)
 %if 0%{?_include_tc}
 BuildRequires: pkgconfig(turbojpeg)
 %endif
+BuildRequires: model-build-features
 
 %description
 
@@ -72,7 +71,9 @@ cp %{SOURCE1001} .
 %global extra_option -DBUILD_TC=TRUE
 %endif
 
+%if "%{?model_build_feature_graphics_gpu_info}" == "mali400"
 %global extra_option -DUSE_MALI=TRUE
+%endif
 
 cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_LIB_DIR=%{_libdir} -DPACKAGE_VERSION=%{version} %{?extra_option}
 make %{?jobs:-j%jobs}
