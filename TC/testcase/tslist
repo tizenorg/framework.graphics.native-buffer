@@ -1,0 +1,6 @@
+/testcase/utc_native_buffer_provider
+/testcase/utc_native_buffer_create
+/testcase/utc_native_buffer_lock
+/testcase/utc_native_buffer_getter
+/testcase/utc_native_buffer_socket
+
